@@ -4,7 +4,7 @@ import Sidebar from "@/layouts/sidebar";
 
 const NotesPage = () => {
   return (
-    <main>
+    <main className="min-h-screen">
       <Navbar />
       <section className="flex">
         <Sidebar />

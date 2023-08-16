@@ -1,6 +1,6 @@
 const Sidebar = () => {
   return (
-    <aside className="max-w-[20rem] border-r-[0.05rem] border-[#393939]">
+    <aside className="w-[19rem] min-w-[16rem] border-r-[0.05rem] border-[#393939]">
       <div className="flex justify-between items-center p-4 px-6 border-b-[0.05rem] border-[#393939]">
         <div className="flex items-center space-x-4">
           <div className="w-5 h-5 bg-[#AE54A2] rounded-full"></div>
