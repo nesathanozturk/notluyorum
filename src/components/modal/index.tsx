@@ -1,5 +1,7 @@
 "use client";
 
+import Options from "../options";
+
 import useToggle from "@/hooks/use-toggle";
 import useInput from "@/hooks/use-input";
 
@@ -33,16 +35,7 @@ const Modal: React.FC<IModalProps> = ({ isOpen, handleClose }) => {
               value={inputs.title}
               onChange={handleChange}
             />
-            <select className="select select-bordered w-full">
-              <option disabled selected>
-                Notunuzun Kategorisi
-              </option>
-              <option>Dilek Listesi</option>
-              <option>Ödev</option>
-              <option>Projeler</option>
-              <option>İş</option>
-              <option>Çalışma</option>
-            </select>
+            <Options />
             <textarea
               className="textarea textarea-bordered w-full"
               placeholder="Notunuz İçeriği"
