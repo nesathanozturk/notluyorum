@@ -4,7 +4,7 @@ const NoteCard = () => {
   const renderedNoteCard = notes.map((note) => (
     <div
       key={note.id}
-      className={`bg-[${note.cardColor}] py-5 px-6 mb-6 md:max-w-[25rem] rounded-3xl cursor-pointer hover:bg-opacity-90 transition-colors`}
+      className={`bg-[${note.cardColor}] py-5 px-6 mb-6 md:max-w-[26.3rem] rounded-3xl cursor-pointer hover:bg-opacity-90 transition-colors`}
     >
       <div className="flex justify-between items-center flex-wrap gap-2 mb-3">
         <h1 className="text-center sm:text-left font-bold text-white">
