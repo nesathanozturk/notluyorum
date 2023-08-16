@@ -8,9 +8,9 @@ const NoteCard = () => {
         </span>
       </div>
       <p className="text-white text-xs leading-6">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid,
-        voluptatum. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-        Aliquid, voluptatum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic incidunt
+        expedita cumque consequuntur vero reiciendis cum sit quasi, voluptatum
+        porro rem deleniti a eum itaque?
       </p>
       <div className="flex justify-between items-center text-[#F5D6DD] font-bold uppercase mt-7 text-sm">
         <span>09:08PM</span>
