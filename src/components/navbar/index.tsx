@@ -13,13 +13,15 @@ const Navbar = () => {
             height={40}
           />
         </div>
-        <span className="font-bold text-gray-200 text-sm">Neşathan Öztürk</span>
+        <span className="font-bold text-gray-200 text-xs sm:text-sm">
+          Neşathan Öztürk
+        </span>
       </div>
       <div className="flex space-x-3">
         <span className="cursor-pointer">
           <BiSun size={25} />
         </span>
-        <button className="btn btn-accent capitalize text-black font-medium text-xs md:text-sm">
+        <button className="btn-accent py-2 px-4 rounded-lg capitalize text-[#1f2d2b] font-medium text-xs md:text-sm">
           Add New Note
         </button>
       </div>
