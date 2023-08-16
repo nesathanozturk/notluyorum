@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center py-6 px-4 text-gray-200 font-semibold text-lg">
+    <footer className="footer footer-center py-6 px-4 text-gray-700 dark:text-gray-200 font-semibold text-lg">
       <div>
         <p>
           Copyright © 2023 - Tüm hakları saklıdır.&nbsp;

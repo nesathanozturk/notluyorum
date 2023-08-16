@@ -7,20 +7,18 @@ import Image from "next/image";
 import Modal from "../modal";
 
 import useToggle from "@/hooks/use-toggle";
-import { useThemeContext } from "@/hooks/use-theme-context";
 
 import { ITheme, IToggle } from "@/types";
+import Toggle from "../toggle";
 
 const Navbar = () => {
   const { isOpen, setIsOpen, handleOpen, handleClose } = useToggle(
     false
   ) as IToggle;
 
-  const { handleThemeChange } = useThemeContext() as ITheme;
-
   return (
     <>
-      <div className="bg-[#EAEAEA] dark:bg-[#303030] contaier mx-auto navbar py-6 px-5 md:px-16 justify-between border-b-[0.05rem] border-[#393939]">
+      <div className="bg-[#EAEAEA] dark:bg-[#303030] contaier mx-auto navbar py-6 px-5 md:px-16 justify-between border-b-[0.05rem] border-[#F1F1F1] dark:border-[#393939]">
         <div className="avatar space-x-4">
           <div className="w-10 rounded-full ring ring-black dark:ring-accent ring-offset-base-100 ring-offset-2 cursor-pointer">
             <Image
@@ -35,14 +33,10 @@ const Navbar = () => {
           </span>
         </div>
         <div className="flex space-x-3">
-          <input
-            type="checkbox"
-            className="toggle"
-            onClick={handleThemeChange}
-          />
+          <Toggle />
           <button
             onClick={handleOpen}
-            className="bg-[#184D47] dark:btn-accent py-2 px-4 rounded-lg capitalize text-[#E8EDED] dark:text-[#1f2d2b] font-medium text-xs md:text-sm transition-colors"
+            className="btn-accent py-2 px-4 rounded-lg capitalize text-[#E8EDED] dark:text-[#1f2d2b] font-medium text-xs md:text-sm transition-colors"
           >
             Not Oluştur
           </button>

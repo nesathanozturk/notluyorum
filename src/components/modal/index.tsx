@@ -2,10 +2,11 @@
 
 import Options from "../options";
 
+import { useThemeContext } from "@/hooks/use-theme-context";
 import useToggle from "@/hooks/use-toggle";
 import useInput from "@/hooks/use-input";
 
-import { IInput, IModalProps } from "@/types";
+import { IInput, IModalProps, ITheme } from "@/types";
 
 const Modal: React.FC<IModalProps> = ({ isOpen, handleClose }) => {
   const INITIAL_STATE = {
@@ -14,9 +15,13 @@ const Modal: React.FC<IModalProps> = ({ isOpen, handleClose }) => {
     description: "",
   };
   const { inputs, setInputs, handleChange } = useInput(INITIAL_STATE) as IInput;
+  const { theme, handleThemeChange } = useThemeContext() as ITheme;
 
   return (
-    <dialog className={`modal ${isOpen ? "modal-open" : ""}`}>
+    <dialog
+      data-theme={theme === true ? "dark" : "light"}
+      className={`modal ${isOpen ? "modal-open" : ""}`}
+    >
       <div className="modal-box">
         <button
           className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"

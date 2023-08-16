@@ -1,3 +1,5 @@
+import Toggle from "@/components/toggle";
+
 const Header = () => {
   return (
     <header className="navbar pt-4">
@@ -8,9 +10,12 @@ const Header = () => {
         >
           Notluyorum
         </h1>
-        <button className="btn btn-primary tracking-widest text-xs md:text-sm">
-          Çıkış Yap
-        </button>
+        <div className="flex items-center space-x-4">
+          <Toggle />
+          <button className="btn btn-primary tracking-widest text-xs md:text-sm">
+            Çıkış Yap
+          </button>
+        </div>
       </nav>
     </header>
   );
