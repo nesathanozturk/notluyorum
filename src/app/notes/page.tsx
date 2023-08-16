@@ -7,7 +7,7 @@ const NotesPage = () => {
   return (
     <main className="min-h-screen">
       <Navbar />
-      <section className="flex">
+      <section className="block sm:flex">
         <Sidebar />
         <Notes />
       </section>
