@@ -28,3 +28,8 @@ export interface ITheme {
   theme: boolean;
   handleThemeChange: () => void;
 }
+
+export interface IWindowSize {
+  width: number;
+  height: number;
+}
