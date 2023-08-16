@@ -39,7 +39,7 @@ const Navbar = () => {
             onClick={handleOpen}
             className="btn-accent py-2 px-4 rounded-lg capitalize text-[#1f2d2b] font-medium text-xs md:text-sm transition-colors"
           >
-            Add New Note
+            Not Oluştur
           </button>
         </div>
       </div>
