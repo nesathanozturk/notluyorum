@@ -10,11 +10,11 @@ const Category = () => {
         <div className={`w-5 h-5 bg-[${category.color}] rounded-full`}></div>
         <span className="font-bold">{category.category}</span>
       </div>
-      <div
+      <span
         className={`w-10 py-[0.3em] bg-[${category.lengthColor}] rounded-xl text-center text-white font-semibold text-sm`}
       >
         {category.length}
-      </div>
+      </span>
     </div>
   ));
 
