@@ -16,10 +16,7 @@ const Modal: React.FC<IModalProps> = ({ isOpen, handleClose }) => {
   const { inputs, setInputs, handleChange } = useInput(INITIAL_STATE) as IInput;
 
   return (
-    <dialog
-      onClick={handleClose}
-      className={`modal ${isOpen ? "modal-open" : ""}`}
-    >
+    <dialog className={`modal ${isOpen ? "modal-open" : ""}`}>
       <div className="modal-box">
         <button
           className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
