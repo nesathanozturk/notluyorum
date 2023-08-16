@@ -1,5 +1,11 @@
+import Navbar from "@/components/navbar";
+
 const NotesPage = () => {
-  return <div>page</div>;
+  return (
+    <div>
+      <Navbar />
+    </div>
+  );
 };
 
 export default NotesPage;
