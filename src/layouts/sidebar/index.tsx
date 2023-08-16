@@ -1,4 +1,4 @@
-import Category from "@/components/navbar/Category";
+import Category from "@/components/category";
 
 const Sidebar = () => {
   return (
