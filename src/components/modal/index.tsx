@@ -11,7 +11,7 @@ const Modal: React.FC<IModalProps> = ({ isOpen, handleClose }) => {
     category: "",
     description: "",
   };
-  const { value, setValue, handleChange } = useInput(INITIAL_STATE) as IInput;
+  const { inputs, setInputs, handleChange } = useInput(INITIAL_STATE) as IInput;
 
   return (
     <dialog className={`modal ${isOpen ? "modal-open" : ""}`}>
@@ -30,21 +30,25 @@ const Modal: React.FC<IModalProps> = ({ isOpen, handleClose }) => {
               placeholder="Notunuz Başlığı"
               className="input input-bordered w-full"
               name="title"
-              value={value.title}
+              value={inputs.title}
               onChange={handleChange}
             />
-            <input
-              type="text"
-              placeholder="Notunuz Kategorisi"
-              className="input input-bordered w-full"
-              name="category"
-              value={value.category}
-              onChange={handleChange}
-            />
+            <select className="select select-bordered w-full">
+              <option disabled selected>
+                Notunuzun Kategorisi
+              </option>
+              <option>Dilek Listesi</option>
+              <option>Ödev</option>
+              <option>Projeler</option>
+              <option>İş</option>
+              <option>Çalışma</option>
+            </select>
             <textarea
               className="textarea textarea-bordered w-full"
               placeholder="Notunuz İçeriği"
-              value={value.description}
+              name="description"
+              value={inputs.description}
+              onChange={handleChange}
             />
             <button type="submit" className="btn btn-accent">
               Oluştur

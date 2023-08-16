@@ -1,16 +1,21 @@
 "use client";
 
-import { IInitialState } from "@/types";
 import { useState } from "react";
 
-const useInput = (params: IInitialState) => {
-  const [value, setValue] = useState<IInitialState>(params);
+import { IInitialState } from "@/types";
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue({ ...value, [e.target.name]: e.target.value });
+const useInput = (params: IInitialState) => {
+  const [inputs, setInputs] = useState<IInitialState>(params);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
-  return { value, setValue, handleChange };
+  return { inputs, setInputs, handleChange };
 };
 
 export default useInput;

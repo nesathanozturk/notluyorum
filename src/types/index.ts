@@ -12,9 +12,11 @@ export interface IInitialState {
 }
 
 export interface IInput {
-  value: IInitialState;
-  setValue: React.Dispatch<React.SetStateAction<IInitialState>>;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputs: IInitialState;
+  setInputs: React.Dispatch<React.SetStateAction<IInitialState>>;
+  handleChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
 }
 
 export interface IModalProps {
