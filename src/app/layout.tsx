@@ -35,7 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={figtree.className}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <main className="bg-white dark:bg-[#303030]">{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );
