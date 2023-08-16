@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <div className="contaier mx-auto navbar py-6 px-5 md:px-16 justify-between border-b-[0.05rem] border-[#333444]">
+    <div className="contaier mx-auto navbar py-6 px-5 md:px-16 justify-between border-b-[0.05rem] border-[#393939]">
       <div className="avatar space-x-4">
         <div className="w-10 rounded-full ring ring-accent ring-offset-base-100 ring-offset-2">
           <Image
