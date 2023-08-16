@@ -1,13 +1,15 @@
 import Navbar from "@/components/navbar";
+import Notes from "@/layouts/notes";
 import Sidebar from "@/layouts/sidebar";
 
 const NotesPage = () => {
   return (
     <main>
       <Navbar />
-      <div>
+      <section className="flex">
         <Sidebar />
-      </div>
+        <Notes />
+      </section>
     </main>
   );
 };
