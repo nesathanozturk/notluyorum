@@ -16,7 +16,10 @@ const Modal: React.FC<IModalProps> = ({ isOpen, handleClose }) => {
   const { inputs, setInputs, handleChange } = useInput(INITIAL_STATE) as IInput;
 
   return (
-    <dialog className={`modal ${isOpen ? "modal-open" : ""}`}>
+    <dialog
+      onClick={handleClose}
+      className={`modal ${isOpen ? "modal-open" : ""}`}
+    >
       <div className="modal-box">
         <button
           className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -43,6 +46,13 @@ const Modal: React.FC<IModalProps> = ({ isOpen, handleClose }) => {
               value={inputs.description}
               onChange={handleChange}
             />
+            <button
+              onClick={handleClose}
+              type="submit"
+              className="btn btn-error"
+            >
+              İptal Et
+            </button>
             <button type="submit" className="btn btn-accent">
               Oluştur
             </button>
