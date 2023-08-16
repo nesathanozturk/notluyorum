@@ -1,10 +1,14 @@
 import Navbar from "@/components/navbar";
+import Sidebar from "@/layouts/sidebar";
 
 const NotesPage = () => {
   return (
-    <div>
+    <main>
       <Navbar />
-    </div>
+      <div>
+        <Sidebar />
+      </div>
+    </main>
   );
 };
 
