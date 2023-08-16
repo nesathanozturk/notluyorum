@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Hero = () => {
   return (
     <section className="hero min-h-screen">
@@ -15,7 +17,9 @@ const Hero = () => {
             unutmak istemediğiniz her şeyi burada bir araya getirin ve en iyi
             şekilde organize edin.
           </p>
-          <button className="btn btn-primary tracking-widest">Başlayın!</button>
+          <button className="btn btn-primary tracking-widest">
+            <Link href="/notes">Başlayın!</Link>
+          </button>
         </div>
       </div>
     </section>
