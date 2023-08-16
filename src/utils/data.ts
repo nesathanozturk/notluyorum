@@ -99,3 +99,30 @@ export const notes = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic incidunt expedita cumque consequuntur vero reiciendis cum sit quasi, voluptatumporro rem deleniti a eum itaque?",
   },
 ];
+
+export const options = [
+  {
+    id: 1,
+    title: "Tüm Notlar",
+  },
+  {
+    id: 2,
+    title: "Dilek Listesi",
+  },
+  {
+    id: 3,
+    title: "Ödev",
+  },
+  {
+    id: 4,
+    title: "Projeler",
+  },
+  {
+    id: 5,
+    title: "İş",
+  },
+  {
+    id: 6,
+    title: "Çalışma",
+  },
+];
