@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useState } from "react";
 
 import { ITheme } from "@/types";

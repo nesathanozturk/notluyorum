@@ -7,13 +7,16 @@ import Image from "next/image";
 import Modal from "../modal";
 
 import useToggle from "@/hooks/use-toggle";
+import { useThemeContext } from "@/hooks/use-theme-context";
 
-import { IToggle } from "@/types";
+import { ITheme, IToggle } from "@/types";
 
 const Navbar = () => {
   const { isOpen, setIsOpen, handleOpen, handleClose } = useToggle(
     false
   ) as IToggle;
+
+  const { handleThemeChange } = useThemeContext() as ITheme;
 
   return (
     <>
@@ -32,7 +35,11 @@ const Navbar = () => {
           </span>
         </div>
         <div className="flex space-x-3">
-          <input type="checkbox" className="toggle" />
+          <input
+            type="checkbox"
+            className="toggle"
+            onClick={handleThemeChange}
+          />
           <button
             onClick={handleOpen}
             className="btn-accent py-2 px-4 rounded-lg capitalize text-[#1f2d2b] font-medium text-xs md:text-sm transition-colors"
