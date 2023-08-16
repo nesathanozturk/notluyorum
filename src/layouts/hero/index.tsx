@@ -5,10 +5,14 @@ const Hero = () => {
     <section className="hero min-h-screen">
       <div className="hero-content text-center">
         <div className="max-w-4xl">
-          <h1 className="text-3xl md:text-5xl font-extrabold text-transparent bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text">
-            Notluyorum&apos;a Hoş Geldiniz!
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white">
+            Notlarınızı{" "}
+            <span className="text-transparent bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text">
+              Notluyorum
+            </span>{" "}
+            ile kolayca yönetin!
           </h1>
-          <p className="py-6 text-xl md:text-2xl text-gray-300 font-semibold tracking-wide">
+          <p className="py-6 text-xl md:text-2xl text-gray-400 font-medium tracking-wider">
             Her an aklınıza gelen fikirleri, yapılacakları veya ilham veren
             notları kaydetmek hiç bu kadar kolay olmamıştı. Notluyorum ile
             hayatınızı düzenlemek ve unutmamak için güçlü bir araca sahip
@@ -17,9 +21,13 @@ const Hero = () => {
             unutmak istemediğiniz her şeyi burada bir araya getirin ve en iyi
             şekilde organize edin.
           </p>
-          <button className="btn btn-primary tracking-widest">
-            <Link href="/notes">Başlayın!</Link>
-          </button>
+          <Link
+            title="Başlayın!"
+            href="/notes"
+            className="btn btn-primary tracking-widest"
+          >
+            Başlayın!
+          </Link>
         </div>
       </div>
     </section>
