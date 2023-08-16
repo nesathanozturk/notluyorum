@@ -1,6 +1,7 @@
-import Navbar from "@/components/navbar";
 import Notes from "@/layouts/notes";
 import Sidebar from "@/layouts/sidebar";
+
+import Navbar from "@/components/navbar";
 
 const NotesPage = () => {
   return (
