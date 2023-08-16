@@ -32,9 +32,7 @@ const Navbar = () => {
           </span>
         </div>
         <div className="flex space-x-3">
-          <span className="cursor-pointer">
-            <BiSun size={25} />
-          </span>
+          <input type="checkbox" className="toggle" />
           <button
             onClick={handleOpen}
             className="btn-accent py-2 px-4 rounded-lg capitalize text-[#1f2d2b] font-medium text-xs md:text-sm transition-colors"
