@@ -23,3 +23,8 @@ export interface IModalProps {
   isOpen: boolean;
   handleClose: () => void;
 }
+
+export interface ITheme {
+  theme: boolean;
+  handleThemeChange: () => void;
+}

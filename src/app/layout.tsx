@@ -1,6 +1,9 @@
-import "./globals.css";
-import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
+import type { Metadata } from "next";
+
+import { ThemeProvider } from "@/context/ThemeContext";
+
+import "./globals.css";
 
 const figtree = Figtree({ subsets: ["latin"] });
 
@@ -10,9 +13,18 @@ export const metadata: Metadata = {
     "Kendi notlarınızı kolayca yönetin! Notluyorum uygulaması ile notlarınızı ekleyin, düzenleyin ve organize edin. Kategorilere ayırın, etiketleyin ve daha fazlasını yapın. Ücretsiz ve kullanımı kolay.",
   generator: "Next.js",
   robots: "index, follow",
-  creator: "Neşathan ÖZTÜRK",
   keywords:
     "not tutma, notlar, not alma, kişisel notlar, not yönetimi, not uygulaması",
+  authors: [
+    {
+      name: "Neşathan Öztürk",
+      url: "https://www.github.com/nesathanozturk/",
+    },
+  ],
+  creator: "Neşathan Öztürk",
+  publisher: "Neşathan Öztürk",
+  applicationName: "Notluyorum",
+  referrer: "origin-when-cross-origin",
 };
 
 export default function RootLayout({
@@ -22,7 +34,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={figtree.className}>{children}</body>
+      <body className={figtree.className}>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }
