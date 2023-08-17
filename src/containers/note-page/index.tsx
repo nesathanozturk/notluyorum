@@ -1,3 +1,5 @@
+import { Toaster } from "react-hot-toast";
+
 import Notes from "@/layouts/notes";
 import Sidebar from "@/layouts/sidebar";
 
@@ -11,6 +13,7 @@ const NotePage = () => {
         <Sidebar />
         <Notes />
       </section>
+      <Toaster />
     </>
   );
 };

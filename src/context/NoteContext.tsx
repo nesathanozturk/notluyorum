@@ -9,6 +9,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
+import toast from "react-hot-toast";
 
 import { useAuthContext } from "./AuthContext";
 
@@ -49,6 +50,18 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     setDescription("");
   };
 
+  const handleSuccess = (desc: string) => {
+    toast.success(desc, {
+      position: "top-right",
+    });
+  };
+
+  const handleError = (desc: string) => {
+    toast.error(desc, {
+      position: "top-right",
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -62,8 +75,10 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
         category,
         description,
       });
+      handleSuccess("Not başarıyla oluşturuldu!");
     } catch (error) {
-      console.log(error);
+      console.log("Error:", error);
+      handleError("Not oluşturulurken bir hata oluştu!");
     }
     clearInputs();
   };
@@ -71,8 +86,10 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
   const handleDeleteNote = async (id: string) => {
     try {
       await deleteDoc(doc(db, "notes", id));
+      handleSuccess("Not başarıyla silindi!");
     } catch (error) {
-      console.log(error);
+      console.log("Error:", error);
+      handleError("Not silinirken bir hata oluştu!");
     }
   };
 
