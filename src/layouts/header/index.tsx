@@ -5,8 +5,9 @@ import { TbLogout, TbLogin } from "react-icons/tb";
 import AuthButton from "@/components/auth-button";
 import Toggle from "@/components/toggle";
 
+import { useAuthContext } from "@/context/AuthContext";
+
 import useWindowSize from "@/hooks/use-window-size";
-import { useAuthContext } from "@/hooks/use-auth-context";
 
 import { IAuth } from "@/types";
 

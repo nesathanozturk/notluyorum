@@ -2,9 +2,10 @@
 
 import Options from "../options";
 
-import { useThemeContext } from "@/hooks/use-theme-context";
+import { useThemeContext } from "@/context/ThemeContext";
+import { useNoteContext } from "@/context/NoteContext";
+
 import useToggle from "@/hooks/use-toggle";
-import { useNoteContext } from "@/hooks/use-note-context";
 
 import { IModalProps, INote, ITheme } from "@/types";
 

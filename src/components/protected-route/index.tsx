@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-import { useAuthContext } from "@/hooks/use-auth-context";
+import { useAuthContext } from "@/context/AuthContext";
 
 import { IAuth } from "@/types";
 

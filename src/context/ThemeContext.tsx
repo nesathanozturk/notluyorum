@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 
 import { ITheme } from "@/types";
 
@@ -27,3 +27,5 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
 export { ThemeProvider };
 export default ThemeContext;
+
+export const useThemeContext = () => useContext(ThemeContext);

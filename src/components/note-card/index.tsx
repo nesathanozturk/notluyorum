@@ -1,6 +1,6 @@
 "use client";
 
-import { useNoteContext } from "@/hooks/use-note-context";
+import { useNoteContext } from "@/context/NoteContext";
 
 import { INote } from "@/types";
 

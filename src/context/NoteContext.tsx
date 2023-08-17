@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import {
   addDoc,
   collection,
@@ -10,7 +10,7 @@ import {
 } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 
-import { useAuthContext } from "@/hooks/use-auth-context";
+import { useAuthContext } from "./AuthContext";
 
 import { db } from "../config/firebase";
 
@@ -95,3 +95,5 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
 
 export { NoteProvider };
 export default NoteContext;
+
+export const useNoteContext = () => useContext(NoteContext);

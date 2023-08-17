@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import {
   signInWithRedirect,
   onAuthStateChanged,
@@ -71,3 +71,5 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
 export { AuthProvider };
 export default AuthContext;
+
+export const useAuthContext = () => useContext(AuthContext);

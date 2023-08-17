@@ -1,6 +1,6 @@
 "use client";
 
-import { useThemeContext } from "@/hooks/use-theme-context";
+import { useThemeContext } from "@/context/ThemeContext";
 
 import { ITheme } from "@/types";
 

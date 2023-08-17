@@ -4,17 +4,23 @@ import { useState } from "react";
 import { BiSun } from "react-icons/bi";
 import Image from "next/image";
 
+import Toggle from "../toggle";
 import Modal from "../modal";
+
+import { useAuthContext } from "@/context/AuthContext";
 
 import useToggle from "@/hooks/use-toggle";
 
-import { ITheme, IToggle } from "@/types";
-import Toggle from "../toggle";
+import { IAuth, ITheme, IToggle } from "@/types";
+
+import Avatar from "@/assets/avatar.jpg";
 
 const Navbar = () => {
   const { isOpen, setIsOpen, handleOpen, handleClose } = useToggle(
     false
   ) as IToggle;
+
+  const { currentUser } = useAuthContext() as IAuth;
 
   return (
     <>
@@ -22,14 +28,14 @@ const Navbar = () => {
         <div className="avatar space-x-4">
           <div className="w-10 rounded-full ring ring-black dark:ring-accent ring-offset-base-100 ring-offset-2 cursor-pointer">
             <Image
-              src="https://avatars.githubusercontent.com/u/107864503?v=4"
-              alt="Avatar"
+              src={currentUser?.photoURL ?? Avatar}
+              alt={currentUser?.displayName ?? "Kullanıcı"}
               width={40}
               height={40}
             />
           </div>
           <span className="font-bold text-gray-600 dark:text-gray-200 text-xs sm:text-sm">
-            Neşathan Öztürk
+            {currentUser?.displayName ?? "Kullanıcı"}
           </span>
         </div>
         <div className="flex space-x-3">
