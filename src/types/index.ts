@@ -8,20 +8,6 @@ export interface IToggle {
   handleClose: () => void;
 }
 
-export interface IInitialState {
-  title: string;
-  category: string;
-  description: string;
-}
-
-export interface IInput {
-  inputs: IInitialState;
-  setInputs: React.Dispatch<React.SetStateAction<IInitialState>>;
-  handleChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
-}
-
 export interface IModalProps {
   isOpen: boolean;
   handleClose: () => void;
@@ -37,9 +23,13 @@ export interface IWindowSize {
   height: number;
 }
 
+export interface IUser {
+  uid: string;
+}
+
 export interface IAuth {
-  currentUser: User | null;
-  setCurrentUser: React.Dispatch<React.SetStateAction<User | null>>;
+  currentUser: null;
+  setCurrentUser: React.Dispatch<React.SetStateAction<IUser | null>>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   handleLogin: () => Promise<void>;
@@ -50,4 +40,28 @@ export interface IAuthButtonProps {
   handleClick: () => void;
   authStatus: string;
   Icon: any;
+}
+
+export interface INoteFeatures {
+  title: string;
+  category: string;
+  description: string;
+}
+
+export interface INote {
+  notes: INoteFeatures[];
+  setNotes: React.Dispatch<React.SetStateAction<INoteFeatures[]>>;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleDeleteNote: (id: string) => Promise<void>;
+  title: string;
+  setTitle: React.Dispatch<React.SetStateAction<string>>;
+  category: string;
+  setCategory: React.Dispatch<React.SetStateAction<string>>;
+  description: string;
+  setDescription: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface IOptionProps {
+  category: string;
+  setCategory: React.Dispatch<React.SetStateAction<string>>;
 }

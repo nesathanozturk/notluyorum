@@ -11,12 +11,12 @@ import { useRouter } from "next/navigation";
 
 import { auth, provider } from "../config/firebase";
 
-import { IAuth } from "@/types";
+import { IAuth, IUser } from "@/types";
 
 const AuthContext = createContext<IAuth | null>(null);
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [currentUser, setCurrentUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState(true);
 
   const router = useRouter();

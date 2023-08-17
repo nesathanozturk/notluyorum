@@ -4,17 +4,19 @@ import Options from "../options";
 
 import { useThemeContext } from "@/hooks/use-theme-context";
 import useToggle from "@/hooks/use-toggle";
-import useInput from "@/hooks/use-input";
 
-import { IInput, IModalProps, ITheme } from "@/types";
+import { IModalProps, INote, ITheme } from "@/types";
+import { useNoteContext } from "@/hooks/use-note-context";
 
 const Modal: React.FC<IModalProps> = ({ isOpen, handleClose }) => {
-  const INITIAL_STATE = {
-    title: "",
-    category: "",
-    description: "",
-  };
-  const { inputs, setInputs, handleChange } = useInput(INITIAL_STATE) as IInput;
+  const {
+    title,
+    setTitle,
+    category,
+    setCategory,
+    description,
+    setDescription,
+  } = useNoteContext() as INote;
   const { theme, handleThemeChange } = useThemeContext() as ITheme;
 
   return (
@@ -37,16 +39,16 @@ const Modal: React.FC<IModalProps> = ({ isOpen, handleClose }) => {
               placeholder="Notunuz Başlığı"
               className="input input-bordered w-full"
               name="title"
-              value={inputs.title}
-              onChange={handleChange}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
-            <Options />
+            <Options category={category} setCategory={setCategory} />
             <textarea
               className="textarea textarea-bordered w-full"
               placeholder="Notunuz İçeriği"
               name="description"
-              value={inputs.description}
-              onChange={handleChange}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
             <button
               onClick={handleClose}

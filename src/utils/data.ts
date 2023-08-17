@@ -121,26 +121,22 @@ export const notes = [
 export const options = [
   {
     id: 1,
-    title: "Tüm Notlar",
-  },
-  {
-    id: 2,
     title: "Dilek Listesi",
   },
   {
-    id: 3,
+    id: 2,
     title: "Ödev",
   },
   {
-    id: 4,
+    id: 3,
     title: "Projeler",
   },
   {
-    id: 5,
+    id: 4,
     title: "İş",
   },
   {
-    id: 6,
+    id: 5,
     title: "Çalışma",
   },
 ];
