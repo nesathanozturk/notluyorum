@@ -1,6 +1,15 @@
+"use client";
+
 import Link from "next/link";
+import { TbLogin } from "react-icons/tb";
+
+import { useAuthContext } from "@/context/AuthContext";
+
+import { IAuth } from "@/types";
 
 const Hero = () => {
+  const { currentUser, handleLogin } = useAuthContext() as IAuth;
+
   return (
     <section className="hero min-h-screen">
       <div className="hero-content text-center">
@@ -21,13 +30,22 @@ const Hero = () => {
             unutmak istemediğiniz her şeyi burada bir araya getirin ve en iyi
             şekilde organize edin.
           </p>
-          <Link
-            href="/notes"
-            title="Başlayın!"
-            className="btn btn-primary tracking-widest"
-          >
-            Başlayın!
-          </Link>
+          {currentUser ? (
+            <Link
+              href="/notes"
+              title="Başlayın!"
+              className="btn btn-primary tracking-widest"
+            >
+              Başlayın!
+            </Link>
+          ) : (
+            <button
+              onClick={handleLogin}
+              className="btn btn-primary tracking-widest text-xs md:text-sm"
+            >
+              Giriş Yapın!
+            </button>
+          )}
         </div>
       </div>
     </section>

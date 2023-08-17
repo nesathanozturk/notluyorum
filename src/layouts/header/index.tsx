@@ -1,8 +1,7 @@
 "use client";
 
-import { TbLogout, TbLogin } from "react-icons/tb";
+import { TbLogout } from "react-icons/tb";
 
-import AuthButton from "@/components/auth-button";
 import Toggle from "@/components/toggle";
 
 import { useAuthContext } from "@/context/AuthContext";
@@ -12,7 +11,9 @@ import useWindowSize from "@/hooks/use-window-size";
 import { IAuth } from "@/types";
 
 const Header = () => {
-  const { currentUser, handleSignOut, handleLogin } = useAuthContext() as IAuth;
+  const { currentUser, handleSignOut } = useAuthContext() as IAuth;
+
+  const { width } = useWindowSize();
 
   return (
     <header className="navbar pt-4">
@@ -26,11 +27,12 @@ const Header = () => {
         <div className="flex items-center space-x-4">
           <Toggle />
           {currentUser && (
-            <AuthButton
-              handleClick={handleSignOut}
-              authStatus="Çıkış Yap"
-              Icon={TbLogout}
-            />
+            <button
+              onClick={handleSignOut}
+              className="btn btn-primary tracking-widest text-xs md:text-sm"
+            >
+              {width > 480 ? "Çıkış Yap" : <TbLogout size={23} />}
+            </button>
           )}
         </div>
       </nav>
