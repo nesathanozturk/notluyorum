@@ -37,7 +37,8 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
         category: doc.data().category,
         description: doc.data().description,
       }));
-      setNotes(data);
+      const filteredData = data.filter((note) => note.uid === currentUser?.uid);
+      setNotes(filteredData);
     });
 
     return () => unsubscribe();
