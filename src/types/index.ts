@@ -1,3 +1,4 @@
+import { User } from "firebase/auth";
 export interface IToggle {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
@@ -32,4 +33,13 @@ export interface ITheme {
 export interface IWindowSize {
   width: number;
   height: number;
+}
+
+export interface IAuth {
+  currentUser: User | null;
+  setCurrentUser: React.Dispatch<React.SetStateAction<User | null>>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  handleLogin: () => Promise<void>;
+  handleSignOut: () => Promise<void>;
 }

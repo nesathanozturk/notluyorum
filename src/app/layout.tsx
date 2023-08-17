@@ -1,6 +1,7 @@
 import { Figtree } from "next/font/google";
 import type { Metadata } from "next";
 
+import { AuthProvider } from "@/context/AuthContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 
 import "./globals.css";
@@ -35,9 +36,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={figtree.className}>
-        <ThemeProvider>
-          <main className="bg-[#FFFDFA] dark:bg-[#303030]">{children}</main>
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <main className="bg-[#FFFDFA] dark:bg-[#303030]">{children}</main>
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );
