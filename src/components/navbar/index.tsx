@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-[#EAEAEA] dark:bg-[#303030] contaier mx-auto navbar py-6 px-5 md:px-16 justify-between border-b-[0.05rem] border-[#F1F1F1] dark:border-[#393939]">
+      <div className="bg-[#EAEAEA] dark:bg-[#303030] contaier mx-auto navbar py-6 px-5 md:px-16 justify-between border-b-[0.05rem] border-[#e4e4e4] dark:border-[#505050]">
         <div className="avatar space-x-4">
           <div className="w-10 rounded-full ring ring-black dark:ring-accent ring-offset-base-100 ring-offset-2 cursor-pointer">
             <Image

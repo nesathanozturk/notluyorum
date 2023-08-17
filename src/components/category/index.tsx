@@ -4,7 +4,7 @@ const Category = () => {
   const renderedCategories = categories.map((category) => (
     <div
       key={category.id}
-      className="flex justify-between items-center flex-wrap p-4 px-6 border-b-[0.05rem] border-[#F0F0F0] dark:border-[#393939] cursor-pointer hover:bg-[#393939] hover:bg-opacity-10 dark:hover:bg-opacity-50 transition-all"
+      className="flex justify-between items-center flex-wrap p-4 px-6 border-b-[0.05rem] border-[#e4e4e4] dark:border-[#505050] cursor-pointer hover:bg-[#393939] hover:bg-opacity-10 dark:hover:bg-opacity-50 transition-all"
     >
       <div className="flex items-center space-x-4">
         <div className={`w-5 h-5 bg-${category.color} rounded-full`}></div>
