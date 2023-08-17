@@ -1,9 +1,18 @@
+"use client";
+
+import { useNoteContext } from "@/context/NoteContext";
+
+import { INote } from "@/types";
+
 import { categories } from "@/utils/data";
 
 const Category = () => {
+  const { filteredCategories } = useNoteContext() as INote;
+
   const renderedCategories = categories.map((category) => (
     <div
       key={category.id}
+      onClick={() => filteredCategories(category.category)}
       className="flex justify-between items-center flex-wrap p-4 px-6 border-b-[0.05rem] border-[#e4e4e4] dark:border-[#505050] cursor-pointer hover:bg-[#393939] hover:bg-opacity-10 dark:hover:bg-opacity-50 transition-all"
     >
       <div className="flex items-center space-x-4">

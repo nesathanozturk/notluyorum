@@ -21,6 +21,7 @@ const NoteContext = createContext<INote | null>(null);
 
 const NoteProvider = ({ children }: { children: React.ReactNode }) => {
   const [notes, setNotes] = useState<INoteFeatures[]>([]);
+  const [filteredNotes, setFilteredNotes] = useState<INoteFeatures[]>([]);
   const [title, setTitle] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -40,6 +41,7 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
       }));
       const filteredData = data.filter((note) => note.uid === currentUser?.uid);
       setNotes(filteredData);
+      setFilteredNotes(filteredData);
     });
 
     return () => unsubscribe();
@@ -93,6 +95,21 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
+  const filteredCategories = (category: string) => {
+    if (!notes) {
+      return;
+    }
+
+    if (category === "Tüm Notlar") {
+      setNotes(filteredNotes);
+      return;
+    }
+    const filteredNotesByCategory = filteredNotes?.filter(
+      (note) => note?.category === category
+    );
+    setNotes(filteredNotesByCategory);
+  };
+
   const valueToShare = {
     notes,
     setNotes,
@@ -104,6 +121,7 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     setCategory,
     description,
     setDescription,
+    filteredCategories,
   };
 
   return (
