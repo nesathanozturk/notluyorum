@@ -38,12 +38,6 @@ export interface IAuth {
   handleSignOut: () => Promise<void>;
 }
 
-export interface IAuthButtonProps {
-  handleClick: () => void;
-  authStatus: string;
-  Icon: any;
-}
-
 export interface INoteFeatures {
   id: string;
   title: string;
