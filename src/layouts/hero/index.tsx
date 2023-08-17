@@ -1,14 +1,6 @@
-"use client";
-
 import Link from "next/link";
 
-import { useAuthContext } from "@/hooks/use-auth-context";
-
-import { IAuth } from "@/types";
-
 const Hero = () => {
-  const { handleLogin } = useAuthContext() as IAuth;
-
   return (
     <section className="hero min-h-screen">
       <div className="hero-content text-center">
@@ -30,9 +22,8 @@ const Hero = () => {
             şekilde organize edin.
           </p>
           <Link
-            onClick={handleLogin}
-            title="Başlayın!"
             href="/notes"
+            title="Başlayın!"
             className="btn btn-primary tracking-widest"
           >
             Başlayın!

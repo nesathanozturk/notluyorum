@@ -7,6 +7,7 @@ import {
   signOut,
   User,
 } from "firebase/auth";
+import { useRouter } from "next/navigation";
 
 import { auth, provider } from "../config/firebase";
 
@@ -17,6 +18,8 @@ const AuthContext = createContext<IAuth | null>(null);
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const router = useRouter();
 
   const handleLogin = async () => {
     try {
@@ -36,6 +39,20 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser(user);
+        router.push("/notes");
+      } else {
+        router.push("/");
+      }
+      setLoading(false);
+    });
+
+    return unsubscribe();
+  }, [router, currentUser]);
+
   const valueToShare = {
     currentUser,
     setCurrentUser,
@@ -44,15 +61,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     handleLogin,
     handleSignOut,
   };
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-      setLoading(false);
-    });
-
-    return unsubscribe();
-  }, []);
 
   return (
     <AuthContext.Provider value={valueToShare}>

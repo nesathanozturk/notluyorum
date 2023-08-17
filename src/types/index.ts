@@ -1,4 +1,6 @@
+import { ReactElement } from "react";
 import { User } from "firebase/auth";
+
 export interface IToggle {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
@@ -42,4 +44,10 @@ export interface IAuth {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   handleLogin: () => Promise<void>;
   handleSignOut: () => Promise<void>;
+}
+
+export interface IAuthButtonProps {
+  handleClick: () => void;
+  authStatus: string;
+  Icon: any;
 }

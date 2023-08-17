@@ -1,17 +1,14 @@
-import Notes from "@/layouts/notes";
-import Sidebar from "@/layouts/sidebar";
+import NotePage from "@/containers/note-page";
 
-import Navbar from "@/components/navbar";
+import ProtectedRoute from "@/components/protected-route";
 
 const NotesPage = () => {
   return (
-    <main className="min-h-screen">
-      <Navbar />
-      <section className="block sm:flex">
-        <Sidebar />
-        <Notes />
-      </section>
-    </main>
+    <ProtectedRoute>
+      <main className="min-h-screen">
+        <NotePage />
+      </main>
+    </ProtectedRoute>
   );
 };
 

@@ -1,13 +1,9 @@
-import Footer from "@/layouts/footer";
-import Header from "@/layouts/header";
-import Hero from "@/layouts/hero";
+import HomePage from "@/containers/home-page";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Header />
-      <Hero />
-      <Footer />
+      <HomePage />
     </main>
   );
 }
