@@ -25,10 +25,12 @@ export interface IWindowSize {
 
 export interface IUser {
   uid: string;
+  displayName: string | null;
+  photoURL: string | null;
 }
 
 export interface IAuth {
-  currentUser: null;
+  currentUser: IUser | null;
   setCurrentUser: React.Dispatch<React.SetStateAction<IUser | null>>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;

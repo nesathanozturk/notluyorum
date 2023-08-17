@@ -42,7 +42,11 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setCurrentUser(user);
+        setCurrentUser({
+          uid: user.uid,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+        });
         router.push("/notes");
       } else {
         router.push("/");
