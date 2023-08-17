@@ -25,17 +25,11 @@ const Header = () => {
         </h1>
         <div className="flex items-center space-x-4">
           <Toggle />
-          {currentUser ? (
+          {currentUser && (
             <AuthButton
               handleClick={handleSignOut}
               authStatus="Çıkış Yap"
               Icon={TbLogout}
-            />
-          ) : (
-            <AuthButton
-              handleClick={handleLogin}
-              authStatus="Giriş Yap"
-              Icon={TbLogin}
             />
           )}
         </div>
