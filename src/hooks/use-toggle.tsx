@@ -2,8 +2,6 @@
 
 import { useState, useRef } from "react";
 
-import { IToggle } from "@/types";
-
 const useToggle = (initialValue: boolean) => {
   const [isOpen, setIsOpen] = useState<boolean>(initialValue);
 
