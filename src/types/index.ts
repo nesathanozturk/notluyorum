@@ -43,6 +43,7 @@ export interface IAuthButtonProps {
 }
 
 export interface INoteFeatures {
+  id: string;
   title: string;
   category: string;
   description: string;

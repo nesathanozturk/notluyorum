@@ -4,12 +4,13 @@ import Options from "../options";
 
 import { useThemeContext } from "@/hooks/use-theme-context";
 import useToggle from "@/hooks/use-toggle";
+import { useNoteContext } from "@/hooks/use-note-context";
 
 import { IModalProps, INote, ITheme } from "@/types";
-import { useNoteContext } from "@/hooks/use-note-context";
 
 const Modal: React.FC<IModalProps> = ({ isOpen, handleClose }) => {
   const {
+    handleSubmit,
     title,
     setTitle,
     category,
@@ -31,7 +32,7 @@ const Modal: React.FC<IModalProps> = ({ isOpen, handleClose }) => {
         >
           ✕
         </button>
-        <form>
+        <form onSubmit={handleSubmit}>
           <h3 className="font-bold text-xl pb-5 text-[#1FB2A6]">Not Oluştur</h3>
           <div className="flex flex-col justify-center space-y-4">
             <input
@@ -50,18 +51,14 @@ const Modal: React.FC<IModalProps> = ({ isOpen, handleClose }) => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-            <button
-              onClick={handleClose}
-              type="submit"
-              className="btn btn-error"
-            >
-              İptal Et
-            </button>
             <button type="submit" className="btn btn-accent">
               Oluştur
             </button>
           </div>
         </form>
+        <button onClick={handleClose} className="btn btn-error w-full mt-3">
+          İptal Et
+        </button>
       </div>
     </dialog>
   );

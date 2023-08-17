@@ -8,6 +8,7 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import { v4 as uuidv4 } from "uuid";
 
 import { useAuthContext } from "@/hooks/use-auth-context";
 
@@ -50,15 +51,11 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!title || !category || description) {
-      alert("Bir not giriniz!");
-      return;
-    }
-
     try {
       const uid = currentUser?.uid;
 
       await addDoc(collection(db, "notes"), {
+        id: uuidv4().toString(),
         uid,
         title,
         category,
