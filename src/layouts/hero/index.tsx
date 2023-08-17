@@ -34,14 +34,14 @@ const Hero = () => {
             <Link
               href="/notes"
               title="Başlayın!"
-              className="btn btn-primary tracking-widest"
+              className="btn btn-primary tracking-widest capitalize"
             >
               Başlayın!
             </Link>
           ) : (
             <button
               onClick={handleLogin}
-              className="btn btn-primary tracking-widest text-xs md:text-sm"
+              className="btn btn-primary tracking-widest capitalize"
             >
               Giriş Yapın!
             </button>

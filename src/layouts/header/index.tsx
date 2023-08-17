@@ -29,7 +29,7 @@ const Header = () => {
           {currentUser && (
             <button
               onClick={handleSignOut}
-              className="btn btn-primary tracking-widest text-xs md:text-sm"
+              className="btn btn-primary tracking-widest capitalize"
             >
               {width > 480 ? "Çıkış Yap" : <TbLogout size={23} />}
             </button>
