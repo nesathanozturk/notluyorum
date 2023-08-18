@@ -28,7 +28,17 @@ const NoteCard = () => {
     </div>
   ));
 
-  return renderedNoteCard;
+  return (
+    <>
+      {notes?.length < 1 ? (
+        <div className="text-center text-2xl font-bold text-gray-500 dark:text-gray-400">
+          Henüz not yok!
+        </div>
+      ) : (
+        renderedNoteCard
+      )}
+    </>
+  );
 };
 
 export default NoteCard;

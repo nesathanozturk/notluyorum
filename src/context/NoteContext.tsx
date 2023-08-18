@@ -102,22 +102,20 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const filteredCategories = useMemo(() => {
-    (category: string) => {
-      if (!notes) {
-        return;
-      }
+  const filteredCategories = (category: string) => {
+    if (!notes) {
+      return;
+    }
 
-      if (category === "Tüm Notlar") {
-        setNotes(filteredNotes);
-        return;
-      }
-      const filteredNotesByCategory = filteredNotes?.filter(
-        (note) => note?.category === category
-      );
-      setNotes(filteredNotesByCategory);
-    };
-  }, [category]);
+    if (category === "Tüm Notlar") {
+      setNotes(filteredNotes);
+      return;
+    }
+    const filteredNotesByCategory = filteredNotes?.filter(
+      (note) => note?.category === category
+    );
+    setNotes(filteredNotesByCategory);
+  };
 
   const valueToShare = {
     notes,

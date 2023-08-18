@@ -56,7 +56,7 @@ export interface INote {
   setCategory: React.Dispatch<React.SetStateAction<string>>;
   description: string;
   setDescription: React.Dispatch<React.SetStateAction<string>>;
-  filteredCategories: void;
+  filteredCategories: (category: string) => void;
 }
 
 export interface IOptionProps {
