@@ -117,9 +117,69 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     setNotes(filteredNotesByCategory);
   };
 
+  const categoryLength = (category: string) => {
+    return filteredNotes?.filter((note) => note?.category === category).length;
+  };
+
+  const categories = [
+    {
+      id: 1,
+      color: "bg-pink-500",
+      darkColor: "bg-pink-700",
+      category: "Tüm Notlar",
+      length: filteredNotes?.length,
+      lengthColor: "bg-pink-500",
+      darkLengthColor: "bg-pink-600",
+    },
+    {
+      id: 2,
+      color: "bg-orange-600",
+      darkColor: "bg-orange-700",
+      category: "Dilek Listesi",
+      length: categoryLength("Dilek Listesi"),
+      lengthColor: "bg-orange-600",
+      darkLengthColor: "bg-orange-700",
+    },
+    {
+      id: 3,
+      color: "bg-blue-600",
+      darkColor: "bg-blue-700",
+      category: "Ödev",
+      length: categoryLength("Ödev"),
+      lengthColor: "bg-blue-600",
+      darkLengthColor: "bg-blue-700",
+    },
+    {
+      id: 4,
+      color: "bg-teal-500",
+      category: "Projeler",
+      length: categoryLength("Projeler"),
+      lengthColor: "bg-teal-500",
+    },
+    {
+      id: 5,
+      color: "bg-rose-500",
+      darkColor: "bg-rose-700",
+      category: "İş",
+      length: categoryLength("İş"),
+      lengthColor: "bg-rose-500",
+      darkLengthColor: "bg-rose-600",
+    },
+    {
+      id: 6,
+      color: "bg-yellow-500",
+      darkColor: "bg-yellow-700",
+      category: "Çalışma",
+      length: categoryLength("Çalışma"),
+      lengthColor: "bg-yellow-500",
+      darkLengthColor: "bg-yellow-700",
+    },
+  ];
+
   const valueToShare = {
     notes,
     setNotes,
+    filteredNotes,
     handleSubmit,
     handleDeleteNote,
     title,
@@ -129,6 +189,7 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     description,
     setDescription,
     filteredCategories,
+    categories,
   };
 
   return (

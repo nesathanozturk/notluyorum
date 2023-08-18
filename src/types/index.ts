@@ -45,9 +45,19 @@ export interface INoteFeatures {
   description: string;
 }
 
+export interface ICategory {
+  id: number;
+  color: string;
+  category: string;
+  length: number;
+  lengthColor: string;
+  darkColor?: string | undefined;
+  darkLengthColor?: string | undefined;
+}
 export interface INote {
   notes: INoteFeatures[];
   setNotes: React.Dispatch<React.SetStateAction<INoteFeatures[]>>;
+  filteredNotes: INoteFeatures[];
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handleDeleteNote: (id: string) => Promise<void>;
   title: string;
@@ -57,6 +67,7 @@ export interface INote {
   description: string;
   setDescription: React.Dispatch<React.SetStateAction<string>>;
   filteredCategories: (category: string) => void;
+  categories: ICategory[];
 }
 
 export interface IOptionProps {
