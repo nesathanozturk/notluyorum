@@ -4,23 +4,27 @@ import { useState } from "react";
 import { BiSun } from "react-icons/bi";
 import Image from "next/image";
 
+import AddModal from "../modal/AddModal";
 import Toggle from "../toggle";
-import Modal from "../modal";
 
 import { useAuthContext } from "@/context/AuthContext";
+import { useNoteContext } from "@/context/NoteContext";
 
 import useToggle from "@/hooks/use-toggle";
 
-import { IAuth, ITheme, IToggle } from "@/types";
+import { IAuth, INote } from "@/types";
 
 import Avatar from "@/assets/avatar.jpg";
 
 const Navbar = () => {
-  const { isOpen, setIsOpen, handleOpen, handleClose } = useToggle(
-    false
-  ) as IToggle;
+  const { isAddNoteModalOpen, setIsAddNoteModalOpen } =
+    useNoteContext() as INote;
 
   const { currentUser } = useAuthContext() as IAuth;
+
+  const handleOpen = () => {
+    setIsAddNoteModalOpen(true);
+  };
 
   return (
     <>
@@ -48,7 +52,7 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      <Modal isOpen={isOpen} handleClose={handleClose} />
+      <AddModal isOpen={isAddNoteModalOpen} />
     </>
   );
 };

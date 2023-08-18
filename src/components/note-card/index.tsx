@@ -3,12 +3,19 @@
 import { TiDelete } from "react-icons/ti";
 import { AiFillEdit } from "react-icons/ai";
 
+import EditModal from "../modal/EditModal";
+
 import { useNoteContext } from "@/context/NoteContext";
 
 import { INote } from "@/types";
 
 const NoteCard = () => {
-  const { notes, handleDeleteNote } = useNoteContext() as INote;
+  const { notes, isEditModalOpen, setIsEditModalOpen, handleDeleteNote } =
+    useNoteContext() as INote;
+
+  const handleOpen = () => {
+    setIsEditModalOpen(true);
+  };
 
   const renderedNoteCard = notes?.map((note) => (
     <div
@@ -16,7 +23,11 @@ const NoteCard = () => {
       className="bg-teal-500 dark:bg-teal-600 py-5 px-6 mb-6 md:max-w-[26.3rem] rounded-3xl cursor-pointer hover:bg-opacity-80 hover:dark:bg-opacity-70 transition-colors text-[#343334] dark:text-white"
     >
       <div className="flex justify-end items-center">
-        <button className="text-teal-900 dark:text-white" title="Düzenle">
+        <button
+          className="text-teal-900 dark:text-white mr-2"
+          onClick={handleOpen}
+          title="Düzenle"
+        >
           <AiFillEdit size={30} />
         </button>
         <button
@@ -46,6 +57,7 @@ const NoteCard = () => {
       ) : (
         renderedNoteCard
       )}
+      <EditModal />
     </>
   );
 };

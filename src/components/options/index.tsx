@@ -2,16 +2,26 @@ import { IOptionProps } from "@/types";
 
 import { options } from "@/utils/data";
 
-const Options: React.FC<IOptionProps> = ({ category, setCategory }) => {
+const Options: React.FC<IOptionProps> = ({
+  title,
+  optionCategory,
+  inputs,
+  setInputs,
+}) => {
   const renderedOptions = (
     <select
-      value={category}
-      onChange={(e) => setCategory(e.target.value)}
+      name={title}
+      value={optionCategory}
+      onChange={(e) =>
+        setInputs({ ...inputs, [e.target.name]: e.target.value })
+      }
       className="select select-bordered w-full"
     >
       <option>Notunuzun Kategorisi</option>
       {options.map((option) => (
-        <option key={option.id}>{option.title}</option>
+        <option key={option.id} value={option.title}>
+          {option.title}
+        </option>
       ))}
     </select>
   );

@@ -21,19 +21,35 @@ import { IAuth, INote, INoteFeatures } from "@/types";
 const NoteContext = createContext<INote | null>(null);
 
 const NoteProvider = ({ children }: { children: React.ReactNode }) => {
+  const INITIAL_STATE = {
+    title: "",
+    category: "",
+    description: "",
+    updatedTitle: "",
+    updatedCategory: "",
+    updatedDescription: "",
+  };
   const [notes, setNotes] = useState<INoteFeatures[]>([]);
   const [filteredNotes, setFilteredNotes] = useState<INoteFeatures[]>([]);
-  const [title, setTitle] = useState<string>("");
-  const [category, setCategory] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  const [edit, setEdit] = useState<boolean>(false);
-  const [updatedTitle, setUpdatedTitle] = useState<string>("");
-  const [updatedCategory, setUpdatedCategory] = useState<string>("");
-  const [updatedDescription, setUpdatedDescription] = useState<string>("");
+  const [isAddNoteModalOpen, setIsAddNoteModalOpen] = useState<boolean>(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
+  const [inputs, setInputs] = useState(INITIAL_STATE);
 
   const { currentUser } = useAuthContext() as IAuth;
 
   const notesRef = collection(db, "notes");
+
+  const handleSuccess = (desc: string) => {
+    toast.success(desc, {
+      position: "top-right",
+    });
+  };
+
+  const handleError = (desc: string) => {
+    toast.error(desc, {
+      position: "top-right",
+    });
+  };
 
   useEffect(() => {
     const getNotes = () => {
@@ -58,24 +74,6 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     getNotes();
   }, []);
 
-  const clearInputs = () => {
-    setTitle("");
-    setCategory("");
-    setDescription("");
-  };
-
-  const handleSuccess = (desc: string) => {
-    toast.success(desc, {
-      position: "top-right",
-    });
-  };
-
-  const handleError = (desc: string) => {
-    toast.error(desc, {
-      position: "top-right",
-    });
-  };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -85,16 +83,15 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
       await addDoc(collection(db, "notes"), {
         id: uuidv4().toString(),
         uid,
-        title,
-        category,
-        description,
+        title: inputs.title,
+        category: inputs.category,
+        description: inputs.description,
       });
       handleSuccess("Not başarıyla oluşturuldu!");
     } catch (error) {
       console.log("Error:", error);
       handleError("Not oluşturulurken bir hata oluştu!");
     }
-    clearInputs();
   };
 
   const handleDeleteNote = async (id: string) => {
@@ -112,9 +109,9 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const noteRef = doc(db, "notes", id);
       await updateDoc(noteRef, {
-        title: updatedTitle,
-        category: updatedCategory,
-        description: updatedDescription,
+        title: inputs.updatedTitle,
+        category: inputs.updatedCategory,
+        description: inputs.updatedDescription,
       });
       handleSuccess("Not başarıyla düzenlendi!");
     } catch (error) {
@@ -203,21 +200,13 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     filteredNotes,
     handleSubmit,
     handleDeleteNote,
-    title,
-    setTitle,
-    category,
-    setCategory,
-    description,
-    setDescription,
-    edit,
-    setEdit,
+    isAddNoteModalOpen,
+    setIsAddNoteModalOpen,
+    isEditModalOpen,
+    setIsEditModalOpen,
+    inputs,
+    setInputs,
     handleEditNote,
-    updatedTitle,
-    setUpdatedTitle,
-    updatedCategory,
-    setUpdatedCategory,
-    updatedDescription,
-    setUpdatedDescription,
     filteredCategories,
     categories,
   };
