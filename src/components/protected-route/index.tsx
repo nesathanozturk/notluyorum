@@ -13,12 +13,10 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { currentUser } = useAuthContext() as IAuth;
 
   useEffect(() => {
-    if (!currentUser) {
-      router.push("/");
-    }
-  }, [router, currentUser]);
+    if (!currentUser) router.push("/");
+  }, [currentUser]);
 
-  let content = currentUser ? children : null;
+  let content = currentUser ? children : "Bu sayfaya erişim yetkiniz yok!";
 
   return content;
 };

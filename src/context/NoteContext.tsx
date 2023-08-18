@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useEffect, useContext, useMemo } from "react";
 import {
   addDoc,
   collection,
@@ -31,24 +31,31 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
   const notesRef = collection(db, "notes");
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(notesRef, (snapshot) => {
-      const data = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        uid: doc.data().uid,
-        title: doc.data().title,
-        category: doc.data().category,
-        description: doc.data().description,
-      }));
-      const filteredData = data.filter((note) => note.uid === currentUser?.uid);
-      setNotes(filteredData);
-      setFilteredNotes(filteredData);
-    });
+    const getNotes = () => {
+      const unsubscribe = onSnapshot(notesRef, (snapshot) => {
+        const data = snapshot.docs.map((doc) => ({
+          id: doc?.id,
+          uid: doc.data()?.uid,
+          title: doc.data()?.title,
+          category: doc.data()?.category,
+          description: doc.data()?.description,
+        }));
+        const filteredData = data?.filter(
+          (note) => note?.uid === currentUser?.uid
+        );
+        setNotes(filteredData);
+        setFilteredNotes(filteredData);
+      });
 
-    return () => unsubscribe();
+      return () => unsubscribe();
+    };
+
+    getNotes();
   }, []);
 
   const clearInputs = () => {
     setTitle("");
+    setCategory("");
     setDescription("");
   };
 
@@ -95,20 +102,22 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const filteredCategories = (category: string) => {
-    if (!notes) {
-      return;
-    }
+  const filteredCategories = useMemo(() => {
+    (category: string) => {
+      if (!notes) {
+        return;
+      }
 
-    if (category === "Tüm Notlar") {
-      setNotes(filteredNotes);
-      return;
-    }
-    const filteredNotesByCategory = filteredNotes?.filter(
-      (note) => note?.category === category
-    );
-    setNotes(filteredNotesByCategory);
-  };
+      if (category === "Tüm Notlar") {
+        setNotes(filteredNotes);
+        return;
+      }
+      const filteredNotesByCategory = filteredNotes?.filter(
+        (note) => note?.category === category
+      );
+      setNotes(filteredNotesByCategory);
+    };
+  }, [category]);
 
   const valueToShare = {
     notes,

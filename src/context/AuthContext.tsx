@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useState, useEffect, useContext } from "react";
+import {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+} from "react";
 import {
   signInWithRedirect,
   onAuthStateChanged,
@@ -21,23 +27,23 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const router = useRouter();
 
-  const handleLogin = async () => {
+  const handleLogin = useCallback(async () => {
     try {
       await signInWithRedirect(auth, provider);
       alert("Login successful!");
     } catch (error) {
       console.log(error);
     }
-  };
+  }, []);
 
-  const handleSignOut = async () => {
+  const handleSignOut = useCallback(async () => {
     try {
       await signOut(auth);
       alert("Sign out successful!");
     } catch (error) {
       console.log(error);
     }
-  };
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -49,13 +55,13 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         });
         router.push("/notes");
       } else {
-        router.push("/");
+        setCurrentUser(null);
       }
       setLoading(false);
     });
 
-    return unsubscribe();
-  }, [router, currentUser]);
+    return () => unsubscribe();
+  }, []);
 
   const valueToShare = {
     currentUser,
