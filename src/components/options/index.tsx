@@ -1,13 +1,14 @@
-import { IOptionProps } from "@/types";
+"use client";
+
+import { useNoteContext } from "@/context/NoteContext";
+
+import { IInputProps, INote, IOptionProps } from "@/types";
 
 import { options } from "@/utils/data";
 
-const Options: React.FC<IOptionProps> = ({
-  title,
-  optionCategory,
-  inputs,
-  setInputs,
-}) => {
+const Options: React.FC<IOptionProps> = ({ title, optionCategory }) => {
+  const { inputs, setInputs } = useNoteContext() as INote;
+
   const renderedOptions = (
     <select
       name={title}

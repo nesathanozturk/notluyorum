@@ -1,7 +1,9 @@
 "use client";
 
-import Options from "../options";
 import Modal from "./Modal";
+import TextArea from "../inputs/TextArea";
+import Options from "../options";
+import Input from "../inputs/Input";
 
 import { useNoteContext } from "@/context/NoteContext";
 
@@ -27,30 +29,14 @@ const EditModal = () => {
         <div>
           <h3 className="font-bold text-xl pb-5 text-[#1FB2A6]">Not Düzenle</h3>
           <div className="flex flex-col justify-center space-y-4">
-            <input
-              type="text"
-              placeholder="Notunuz Başlığı"
-              className="input input-bordered w-full"
-              name="updatedTitle"
-              value={inputs.updatedTitle}
-              onChange={(e) =>
-                setInputs({ ...inputs, [e.target.name]: e.target.value })
-              }
-            />
+            <Input title="updatedTitle" inputValue={inputs.updatedTitle} />
             <Options
               title="updatedCategory"
               optionCategory={inputs.updatedCategory}
-              inputs={inputs}
-              setInputs={setInputs}
             />
-            <textarea
-              className="textarea textarea-bordered w-full"
-              placeholder="Notunuz İçeriği"
-              name="updatedDescription"
-              value={inputs.updatedDescription}
-              onChange={(e) =>
-                setInputs({ ...inputs, [e.target.name]: e.target.value })
-              }
+            <TextArea
+              title="updatedDescription"
+              inputValue={inputs.updatedDescription}
             />
             <button
               type="submit"

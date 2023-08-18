@@ -78,6 +78,9 @@ export interface INote {
 export interface IOptionProps {
   title: string;
   optionCategory: string;
-  inputs: IInputs;
-  setInputs: (value: React.SetStateAction<IInputs>) => void;
+}
+
+export interface IInputProps {
+  title: string;
+  inputValue: string;
 }

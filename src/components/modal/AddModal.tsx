@@ -1,11 +1,13 @@
 "use client";
 
-import Options from "../options";
 import Modal from "./Modal";
+import Input from "../inputs/Input";
+import Options from "../options";
 
 import { useNoteContext } from "@/context/NoteContext";
 
 import { INote } from "@/types";
+import TextArea from "../inputs/TextArea";
 
 const AddModal = () => {
   const {
@@ -26,31 +28,9 @@ const AddModal = () => {
         <form onSubmit={handleSubmit}>
           <h3 className="font-bold text-xl pb-5 text-[#1FB2A6]">Not Oluştur</h3>
           <div className="flex flex-col justify-center space-y-4">
-            <input
-              type="text"
-              placeholder="Notunuz Başlığı"
-              className="input input-bordered w-full"
-              name="title"
-              value={inputs.title}
-              onChange={(e) =>
-                setInputs({ ...inputs, [e.target.name]: e.target.value })
-              }
-            />
-            <Options
-              title="category"
-              optionCategory={inputs.category}
-              inputs={inputs}
-              setInputs={setInputs}
-            />
-            <textarea
-              className="textarea textarea-bordered w-full"
-              placeholder="Notunuz İçeriği"
-              name="description"
-              value={inputs.description}
-              onChange={(e) =>
-                setInputs({ ...inputs, [e.target.name]: e.target.value })
-              }
-            />
+            <Input title="title" inputValue={inputs.title} />
+            <Options title="category" optionCategory={inputs.category} />
+            <TextArea title="description" inputValue={inputs.description} />
             <button type="submit" className="btn btn-accent">
               Oluştur
             </button>
