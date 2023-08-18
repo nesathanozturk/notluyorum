@@ -52,7 +52,7 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      <AddModal isOpen={isAddNoteModalOpen} />
+      <AddModal />
     </>
   );
 };
