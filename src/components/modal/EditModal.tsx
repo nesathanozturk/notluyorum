@@ -8,8 +8,14 @@ import { useNoteContext } from "@/context/NoteContext";
 import { INote } from "@/types";
 
 const EditModal = () => {
-  const { isEditModalOpen, setIsEditModalOpen, inputs, setInputs } =
-    useNoteContext() as INote;
+  const {
+    isEditModalOpen,
+    setIsEditModalOpen,
+    inputs,
+    setInputs,
+    handleEditNote,
+    selectedNote,
+  } = useNoteContext() as INote;
 
   const handleClose = () => {
     setIsEditModalOpen(false);
@@ -46,7 +52,11 @@ const EditModal = () => {
                 setInputs({ ...inputs, [e.target.name]: e.target.value })
               }
             />
-            <button type="submit" className="btn btn-accent">
+            <button
+              type="submit"
+              className="btn btn-accent"
+              onClick={() => handleEditNote(selectedNote)}
+            >
               Düzenle
             </button>
           </div>

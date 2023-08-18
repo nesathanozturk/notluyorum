@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
+import NoAccess from "../no-access";
+
 import { useAuthContext } from "@/context/AuthContext";
 
 import { IAuth } from "@/types";
@@ -16,7 +18,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     if (!currentUser) router.push("/");
   }, [currentUser]);
 
-  let content = currentUser ? children : "Bu sayfaya erişim yetkiniz yok!";
+  let content = currentUser ? children : <NoAccess />;
 
   return content;
 };

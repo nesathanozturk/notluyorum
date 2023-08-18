@@ -10,8 +10,6 @@ import Toggle from "../toggle";
 import { useAuthContext } from "@/context/AuthContext";
 import { useNoteContext } from "@/context/NoteContext";
 
-import useToggle from "@/hooks/use-toggle";
-
 import { IAuth, INote } from "@/types";
 
 import Avatar from "@/assets/avatar.jpg";

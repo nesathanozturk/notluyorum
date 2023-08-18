@@ -10,11 +10,17 @@ import { useNoteContext } from "@/context/NoteContext";
 import { INote } from "@/types";
 
 const NoteCard = () => {
-  const { notes, isEditModalOpen, setIsEditModalOpen, handleDeleteNote } =
-    useNoteContext() as INote;
+  const {
+    notes,
+    isEditModalOpen,
+    setIsEditModalOpen,
+    handleDeleteNote,
+    handleSelectedNote,
+  } = useNoteContext() as INote;
 
-  const handleOpen = () => {
+  const handleOpen = (id: string) => {
     setIsEditModalOpen(true);
+    handleSelectedNote?.(id);
   };
 
   const renderedNoteCard = notes?.map((note) => (
@@ -25,7 +31,7 @@ const NoteCard = () => {
       <div className="flex justify-end items-center">
         <button
           className="text-teal-900 dark:text-white mr-2"
-          onClick={handleOpen}
+          onClick={() => handleOpen(note?.id)}
           title="Düzenle"
         >
           <AiFillEdit size={30} />
@@ -51,8 +57,8 @@ const NoteCard = () => {
   return (
     <>
       {notes?.length < 1 ? (
-        <div className="text-center text-2xl font-bold text-gray-500 dark:text-gray-400">
-          Henüz not yok!
+        <div className="md:text-center text-2xl font-bold text-gray-500 dark:text-gray-400">
+          <p>Henüz notunuz yok!</p>
         </div>
       ) : (
         renderedNoteCard

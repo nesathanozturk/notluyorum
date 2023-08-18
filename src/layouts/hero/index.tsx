@@ -31,18 +31,11 @@ const Hero = () => {
             şekilde organize edin.
           </p>
           {currentUser ? (
-            <Link
-              href="/notes"
-              title="Başlayın!"
-              className="btn btn-primary tracking-widest capitalize"
-            >
+            <Link href="/notes" title="Başlayın!" className="hero-btn">
               Başlayın!
             </Link>
           ) : (
-            <button
-              onClick={handleLogin}
-              className="btn btn-primary tracking-widest capitalize"
-            >
+            <button onClick={handleLogin} className="hero-btn">
               Giriş Yapın!
             </button>
           )}

@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hero-btn {
+  @apply btn btn-primary tracking-widest capitalize;
+}

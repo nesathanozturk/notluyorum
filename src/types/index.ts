@@ -1,5 +1,4 @@
 import { ReactElement } from "react";
-import { User } from "firebase/auth";
 
 export interface IModalProps {
   isOpen: boolean;
@@ -67,9 +66,11 @@ export interface INote {
   setIsEditModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   inputs: IInputs;
   setInputs: (value: React.SetStateAction<IInputs>) => void;
+  selectedNote: string;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handleDeleteNote: (id: string) => Promise<void>;
-  handleEditNote: (id: string) => Promise<void>;
+  handleEditNote: (selectedNote: string) => Promise<void>;
+  handleSelectedNote: (id: string) => void;
   filteredCategories: (category: string) => void;
   categories: ICategory[];
 }

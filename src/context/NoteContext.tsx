@@ -34,6 +34,7 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
   const [isAddNoteModalOpen, setIsAddNoteModalOpen] = useState<boolean>(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
   const [inputs, setInputs] = useState(INITIAL_STATE);
+  const [selectedNote, setSelectedNote] = useState<string>("");
 
   const { currentUser } = useAuthContext() as IAuth;
 
@@ -105,15 +106,20 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const handleEditNote = async (id: string) => {
+  const handleSelectedNote = (id: string) => {
+    setSelectedNote(id);
+  };
+
+  const handleEditNote = async (selectedNote: string) => {
     try {
-      const noteRef = doc(db, "notes", id);
+      const noteRef = doc(db, "notes", selectedNote);
       await updateDoc(noteRef, {
         title: inputs.updatedTitle,
         category: inputs.updatedCategory,
         description: inputs.updatedDescription,
       });
       handleSuccess("Not başarıyla düzenlendi!");
+      setInputs(INITIAL_STATE);
     } catch (error) {
       console.log("Error:", error);
       handleError("Not düzenlenirken bir hata oluştu!");
@@ -206,7 +212,9 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     setIsEditModalOpen,
     inputs,
     setInputs,
+    selectedNote,
     handleEditNote,
+    handleSelectedNote,
     filteredCategories,
     categories,
   };
