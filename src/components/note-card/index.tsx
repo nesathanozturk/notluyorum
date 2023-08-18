@@ -9,7 +9,7 @@ const NoteCard = () => {
 
   const renderedNoteCard = notes?.map((note) => (
     <div
-      key={note.title}
+      key={note?.id}
       className="bg-teal-500 dark:bg-teal-600 py-5 px-6 mb-6 md:max-w-[26.3rem] rounded-3xl cursor-pointer hover:bg-opacity-90 transition-colors text-[#343334] dark:text-white relative"
     >
       <div className="flex justify-between items-center flex-wrap gap-2 mb-3">
@@ -21,7 +21,7 @@ const NoteCard = () => {
       <p className="text-xs leading-6">{note?.description}</p>
       <button
         className="absolute btn btn-sm btn-error left-3 bottom-3 text-white bg-red-600 border-0"
-        onClick={() => handleDeleteNote?.(note.id)}
+        onClick={() => handleDeleteNote?.(note?.id)}
       >
         Kaldır
       </button>
