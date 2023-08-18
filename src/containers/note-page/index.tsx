@@ -9,7 +9,7 @@ const NotePage = () => {
   return (
     <>
       <Navbar />
-      <section className="sm:flex">
+      <section className="md:flex">
         <Sidebar />
         <Notes />
       </section>
