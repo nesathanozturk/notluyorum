@@ -2,11 +2,12 @@
 
 import { createContext, useState, useEffect, useContext, useMemo } from "react";
 import {
+  doc,
   addDoc,
   collection,
   onSnapshot,
   deleteDoc,
-  doc,
+  updateDoc,
 } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 import toast from "react-hot-toast";
@@ -25,6 +26,10 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
   const [title, setTitle] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+  const [edit, setEdit] = useState<boolean>(false);
+  const [updatedTitle, setUpdatedTitle] = useState<string>("");
+  const [updatedCategory, setUpdatedCategory] = useState<string>("");
+  const [updatedDescription, setUpdatedDescription] = useState<string>("");
 
   const { currentUser } = useAuthContext() as IAuth;
 
@@ -94,11 +99,27 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
 
   const handleDeleteNote = async (id: string) => {
     try {
-      await deleteDoc(doc(db, "notes", id));
+      const noteRef = doc(db, "notes", id);
+      await deleteDoc(noteRef);
       handleSuccess("Not başarıyla silindi!");
     } catch (error) {
       console.log("Error:", error);
       handleError("Not silinirken bir hata oluştu!");
+    }
+  };
+
+  const handleEditNote = async (id: string) => {
+    try {
+      const noteRef = doc(db, "notes", id);
+      await updateDoc(noteRef, {
+        title: updatedTitle,
+        category: updatedCategory,
+        description: updatedDescription,
+      });
+      handleSuccess("Not başarıyla düzenlendi!");
+    } catch (error) {
+      console.log("Error:", error);
+      handleError("Not düzenlenirken bir hata oluştu!");
     }
   };
 
@@ -188,6 +209,15 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     setCategory,
     description,
     setDescription,
+    edit,
+    setEdit,
+    handleEditNote,
+    updatedTitle,
+    setUpdatedTitle,
+    updatedCategory,
+    setUpdatedCategory,
+    updatedDescription,
+    setUpdatedDescription,
     filteredCategories,
     categories,
   };
