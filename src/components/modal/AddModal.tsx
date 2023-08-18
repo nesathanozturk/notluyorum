@@ -1,13 +1,13 @@
 "use client";
 
 import Modal from "./Modal";
+import TextArea from "../inputs/TextArea";
 import Input from "../inputs/Input";
 import Options from "../options";
 
 import { useNoteContext } from "@/context/NoteContext";
 
 import { INote } from "@/types";
-import TextArea from "../inputs/TextArea";
 
 const AddModal = () => {
   const {

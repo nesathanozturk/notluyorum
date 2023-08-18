@@ -2,8 +2,8 @@
 
 import Modal from "./Modal";
 import TextArea from "../inputs/TextArea";
-import Options from "../options";
 import Input from "../inputs/Input";
+import Options from "../options";
 
 import { useNoteContext } from "@/context/NoteContext";
 
