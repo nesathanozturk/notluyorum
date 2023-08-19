@@ -29,7 +29,7 @@ const AddModal = () => {
           <h3 className="font-bold text-xl pb-5 text-[#1FB2A6]">Not Oluştur</h3>
           <div className="flex flex-col justify-center space-y-4">
             <Input title="title" inputValue={inputs.title} />
-            <Options title="category" optionCategory={inputs.category} />
+            <Options title="category" inputValue={inputs.category} />
             <TextArea title="description" inputValue={inputs.description} />
             <button type="submit" className="btn btn-accent">
               Oluştur

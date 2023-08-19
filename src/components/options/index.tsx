@@ -2,17 +2,17 @@
 
 import { useNoteContext } from "@/context/NoteContext";
 
-import { IInputProps, INote, IOptionProps } from "@/types";
+import { IInputProps, INote } from "@/types";
 
 import { options } from "@/utils/data";
 
-const Options: React.FC<IOptionProps> = ({ title, optionCategory }) => {
+const Options: React.FC<IInputProps> = ({ title, inputValue }) => {
   const { inputs, setInputs } = useNoteContext() as INote;
 
   const renderedOptions = (
     <select
       name={title}
-      value={optionCategory}
+      value={inputValue}
       onChange={(e) =>
         setInputs({ ...inputs, [e.target.name]: e.target.value })
       }

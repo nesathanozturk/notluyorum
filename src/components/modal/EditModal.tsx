@@ -32,7 +32,7 @@ const EditModal = () => {
             <Input title="updatedTitle" inputValue={inputs.updatedTitle} />
             <Options
               title="updatedCategory"
-              optionCategory={inputs.updatedCategory}
+              inputValue={inputs.updatedCategory}
             />
             <TextArea
               title="updatedDescription"

@@ -75,11 +75,6 @@ export interface INote {
   categories: ICategory[];
 }
 
-export interface IOptionProps {
-  title: string;
-  optionCategory: string;
-}
-
 export interface IInputProps {
   title: string;
   inputValue: string;
