@@ -70,6 +70,11 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const handleCreateNote = async () => {
+    if (!inputs.title && !inputs.category && !inputs.description) {
+      showToast("Lütfen tüm alanları doldurun!", "error");
+      return;
+    }
+
     try {
       const uid = currentUser?.uid;
 
@@ -111,6 +116,15 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const handleEditNote = async (selectedNote: string) => {
+    if (
+      !inputs.updatedTitle &&
+      !inputs.updatedCategory &&
+      !inputs.updatedDescription
+    ) {
+      showToast("Lütfen tüm alanları doldurun!", "error");
+      return;
+    }
+
     const noteRef = doc(db, "notes", selectedNote);
 
     try {
