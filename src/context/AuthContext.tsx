@@ -15,6 +15,8 @@ import {
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
+import { showToast } from "@/helpers";
+
 import { auth, provider } from "../config/firebase";
 
 import { IAuth, IUser } from "@/types";
@@ -30,18 +32,20 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const handleLogin = useCallback(async () => {
     try {
       await signInWithRedirect(auth, provider);
-      alert("Login successful!");
+      alert("Başarılı bir şekilde giriş yapıldı!");
     } catch (error) {
       console.log(error);
+      showToast("Giriş yapmaya çalışırken bir hata oluştu!", "error");
     }
   }, []);
 
   const handleSignOut = useCallback(async () => {
     try {
       await signOut(auth);
-      alert("Sign out successful!");
+      showToast("Başarılı bir şekilde çıkış yapıldı!", "success");
     } catch (error) {
       console.log(error);
+      showToast("Çıkış yapmaya çalışırken bir hata oluştu!", "error");
     }
   }, []);
 

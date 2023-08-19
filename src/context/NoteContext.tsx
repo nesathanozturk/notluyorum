@@ -10,9 +10,10 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
-import toast from "react-hot-toast";
 
 import { useAuthContext } from "./AuthContext";
+
+import { showToast } from "@/helpers";
 
 import { db } from "../config/firebase";
 
@@ -39,12 +40,6 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
   const { currentUser } = useAuthContext() as IAuth;
 
   const notesRef = collection(db, "notes");
-
-  const showToast = (desc: string, type: "success" | "error") => {
-    toast[type](desc, {
-      position: "top-right",
-    });
-  };
 
   useEffect(() => {
     const getNotes = () => {
