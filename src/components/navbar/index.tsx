@@ -33,6 +33,7 @@ const Navbar = () => {
               alt={currentUser?.displayName ?? "Kullanıcı"}
               width={40}
               height={40}
+              title={currentUser?.displayName ?? "Kullanıcı"}
             />
           </div>
           <span className="font-bold text-gray-600 dark:text-gray-200 text-xs sm:text-sm">

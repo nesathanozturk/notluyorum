@@ -10,7 +10,7 @@ const TextArea: React.FC<IInputProps> = ({ title, inputValue }) => {
   return (
     <>
       <textarea
-        className="textarea textarea-bordered w-full"
+        className="textarea textarea-bordered w-full resize-none"
         placeholder="Notunuz İçeriği"
         name={title}
         value={inputValue}
