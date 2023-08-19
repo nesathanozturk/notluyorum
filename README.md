@@ -1,4 +1,4 @@
-## About the project
+## ℹ️ About the project
 
 <p>This is a note creation application built using Next.js. With this application, users can add, edit, and delete notes. They can also filter notes by category.<p>
 
