@@ -18,7 +18,9 @@ const Options: React.FC<IInputProps> = ({ title, inputValue }) => {
       }
       className="select select-bordered w-full"
     >
-      <option>Notunuzun Kategorisi</option>
+      <option value="" disabled>
+        Notunuzun Kategorisi
+      </option>
       {options.map((option) => (
         <option key={option.id} value={option.title}>
           {option.title}
