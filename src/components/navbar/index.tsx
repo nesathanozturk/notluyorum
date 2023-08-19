@@ -4,7 +4,6 @@ import { useState } from "react";
 import { BiSun } from "react-icons/bi";
 import Image from "next/image";
 
-import AddModal from "../modal/AddModal";
 import Toggle from "../toggle";
 
 import { useAuthContext } from "@/context/AuthContext";
@@ -50,7 +49,6 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      <AddModal />
     </>
   );
 };
