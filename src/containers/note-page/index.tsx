@@ -11,7 +11,7 @@ const NotePage = () => {
   return (
     <>
       <Navbar />
-      <section className="md:flex">
+      <section className="lg:flex">
         <Sidebar />
         <Notes />
       </section>

@@ -57,7 +57,7 @@ const NoteCard = () => {
   return (
     <>
       {notes?.length < 1 ? (
-        <div className="md:text-center text-2xl font-bold text-gray-500 dark:text-gray-400">
+        <div className="text-2xl font-bold text-gray-500 dark:text-gray-400">
           <p>Henüz notunuz yok!</p>
         </div>
       ) : (
