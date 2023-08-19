@@ -13,6 +13,7 @@ const Toggle = () => {
         data-theme={theme === true ? "dark" : "light"}
         type="checkbox"
         className="toggle"
+        checked={theme}
         onClick={handleThemeChange}
       />
     </>
