@@ -40,14 +40,8 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
 
   const notesRef = collection(db, "notes");
 
-  const handleSuccess = (desc: string) => {
-    toast.success(desc, {
-      position: "top-right",
-    });
-  };
-
-  const handleError = (desc: string) => {
-    toast.error(desc, {
+  const showToast = (desc: string, type: "success" | "error") => {
+    toast[type](desc, {
       position: "top-right",
     });
   };
@@ -75,9 +69,7 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     getNotes();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const handleCreateNote = async () => {
     try {
       const uid = currentUser?.uid;
 
@@ -88,12 +80,18 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
         category: inputs.category,
         description: inputs.description,
       });
-      handleSuccess("Not başarıyla oluşturuldu!");
+      showToast("Not başarıyla oluşturuldu!", "success");
       setInputs(INITIAL_STATE);
     } catch (error) {
       console.log("Error:", error);
-      handleError("Not oluşturulurken bir hata oluştu!");
+      showToast("Not oluşturulurken bir hata oluştu!", "error");
     }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    await handleCreateNote();
   };
 
   const handleDeleteNote = async (id: string) => {
@@ -101,10 +99,10 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
 
     try {
       await deleteDoc(noteRef);
-      handleSuccess("Not başarıyla silindi!");
+      showToast("Not başarıyla silindi!", "success");
     } catch (error) {
       console.log("Error:", error);
-      handleError("Not silinirken bir hata oluştu!");
+      showToast("Not silinirken bir hata oluştu!", "error");
     }
   };
 
@@ -121,11 +119,11 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
         category: inputs.updatedCategory,
         description: inputs.updatedDescription,
       });
-      handleSuccess("Not başarıyla düzenlendi!");
+      showToast("Not başarıyla düzenlendi!", "success");
       setInputs(INITIAL_STATE);
     } catch (error) {
       console.log("Error:", error);
-      handleError("Not düzenlenirken bir hata oluştu!");
+      showToast("Not düzenlenirken bir hata oluştu!", "error");
     }
   };
 
