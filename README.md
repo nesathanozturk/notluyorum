@@ -2,6 +2,8 @@
 
 <p>This is a note creation application built using Next.js. With this application, users can add, edit, and delete notes. They can also filter notes by category.<p>
 
+<p>If you use Mozilla, you should turn off Enhanced Tracking Protection.<p>
+
 ## 🧰 Technologies Used
 
 - Next.js
