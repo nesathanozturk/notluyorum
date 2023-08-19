@@ -20,15 +20,15 @@ import { IAuth, INote, INoteFeatures } from "@/types";
 
 const NoteContext = createContext<INote | null>(null);
 
+const INITIAL_STATE = {
+  title: "",
+  category: "",
+  description: "",
+  updatedTitle: "",
+  updatedCategory: "",
+  updatedDescription: "",
+};
 const NoteProvider = ({ children }: { children: React.ReactNode }) => {
-  const INITIAL_STATE = {
-    title: "",
-    category: "",
-    description: "",
-    updatedTitle: "",
-    updatedCategory: "",
-    updatedDescription: "",
-  };
   const [notes, setNotes] = useState<INoteFeatures[]>([]);
   const [filteredNotes, setFilteredNotes] = useState<INoteFeatures[]>([]);
   const [isAddNoteModalOpen, setIsAddNoteModalOpen] = useState<boolean>(false);
@@ -89,6 +89,7 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
         description: inputs.description,
       });
       handleSuccess("Not başarıyla oluşturuldu!");
+      setInputs(INITIAL_STATE);
     } catch (error) {
       console.log("Error:", error);
       handleError("Not oluşturulurken bir hata oluştu!");
@@ -96,8 +97,9 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const handleDeleteNote = async (id: string) => {
+    const noteRef = doc(db, "notes", id);
+
     try {
-      const noteRef = doc(db, "notes", id);
       await deleteDoc(noteRef);
       handleSuccess("Not başarıyla silindi!");
     } catch (error) {
@@ -111,8 +113,9 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const handleEditNote = async (selectedNote: string) => {
+    const noteRef = doc(db, "notes", selectedNote);
+
     try {
-      const noteRef = doc(db, "notes", selectedNote);
       await updateDoc(noteRef, {
         title: inputs.updatedTitle,
         category: inputs.updatedCategory,
