@@ -5,3 +5,7 @@
 .hero-btn {
   @apply btn btn-primary tracking-widest capitalize;
 }
+
+.word-wrap {
+  word-wrap: anywhere;
+}

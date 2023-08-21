@@ -45,12 +45,14 @@ const NoteCard = () => {
         </button>
       </div>
       <div className="flex justify-between items-center flex-wrap gap-2 my-4">
-        <h1 className="text-center sm:text-left font-bold">{note?.title}</h1>
-        <span className="px-3 py-[0.7em] sm:px-5 sm:py-[0.9em] bg-teal-700 text-white dark:bg-white rounded-xl text-center dark:text-green-600 font-semibold text-xs uppercase tracking-widest">
+        <h1 className="text-center sm:text-left font-bold word-wrap">
+          {note?.title}
+        </h1>
+        <span className="px-3 py-[0.7em] sm:px-5 sm:py-[0.9em] bg-teal-700 text-white dark:bg-white rounded-xl text-center dark:text-green-600 font-semibold text-xs uppercase tracking-widest word-wrap">
           {note?.category}
         </span>
       </div>
-      <p className="text-xs leading-6">{note?.description}</p>
+      <p className="text-xs leading-6 word-wrap">{note?.description}</p>
     </div>
   ));
 
