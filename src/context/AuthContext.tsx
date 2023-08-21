@@ -57,7 +57,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           displayName: user.displayName,
           photoURL: user.photoURL,
         });
-        router.push("/notes");
       } else {
         setCurrentUser(null);
       }

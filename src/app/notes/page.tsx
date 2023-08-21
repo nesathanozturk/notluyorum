@@ -5,9 +5,7 @@ import ProtectedRoute from "@/components/protected-route";
 const NotesPage = () => {
   return (
     <ProtectedRoute>
-      <main className="min-h-screen">
-        <NotePage />
-      </main>
+      <NotePage />
     </ProtectedRoute>
   );
 };

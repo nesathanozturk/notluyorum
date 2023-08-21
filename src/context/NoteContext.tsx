@@ -185,10 +185,12 @@ const NoteProvider = ({ children }: { children: React.ReactNode }) => {
     },
     {
       id: 4,
-      color: "bg-teal-500",
+      color: "bg-gray-500",
+      darkColor: "bg-gray-600",
       category: "Projeler",
       length: categoryLength("Projeler"),
-      lengthColor: "bg-teal-500",
+      lengthColor: "bg-gray-500",
+      darkLengthColor: "bg-gray-600",
     },
     {
       id: 5,

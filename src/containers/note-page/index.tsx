@@ -6,19 +6,21 @@ import Sidebar from "@/layouts/sidebar";
 import AddModal from "@/components/modal/AddModal";
 import EditModal from "@/components/modal/EditModal";
 import Navbar from "@/components/navbar";
+import OpenModal from "@/components/modal/OpenModal";
 
 const NotePage = () => {
   return (
-    <>
+    <main className="min-h-screen relative">
       <Navbar />
       <section className="md:flex">
         <Sidebar />
         <Notes />
       </section>
-      <Toaster />
       <AddModal />
       <EditModal />
-    </>
+      <OpenModal />
+      <Toaster />
+    </main>
   );
 };
 
