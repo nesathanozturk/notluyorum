@@ -16,8 +16,8 @@ const Header = () => {
   const { width } = useWindowSize();
 
   return (
-    <header className="navbar pt-4">
-      <nav className="container mx-auto px-3 md:px-6 justify-between flex-wrap">
+    <header className="pt-4">
+      <nav className="px-3 md:px-6 flex items-center flex-col xs:flex-row xs:justify-between flex-wrap">
         <h1
           title="Notluyorum"
           className="text-3xl md:text-4xl font-extrabold text-transparent bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text cursor-pointer"
